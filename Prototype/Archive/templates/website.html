@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Modern Problems</title>
+    </head>
+    
+    <body>
+        <form name="form", method="POST", style="text-align: center;">
+            <p>input:</p>
+            <textarea rows="5" cols="30" name = "input" placeholder= "enter input in format {Question, Numbers}" required></textarea>
+            <br><br>
+            <button value="Submit">Run</button>
+        </form>
+        {% for single in output %}
+        <p style="text-align: center;">{{ single }}</p>
+        {% endfor %}
+    </body>
+</html>
+
