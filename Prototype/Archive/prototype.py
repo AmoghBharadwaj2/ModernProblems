@@ -6,7 +6,7 @@ import re
 import random
 from textblob import TextBlob
 def generate(question, nums):
-    #generator for religion (Nature)
+    #generator for science (Nature)
     science = pipeline('text-generation',
                         model='huggingtweets/nature')
     #generator for philosophy (philosophy_mark, Professor of philosophy)
