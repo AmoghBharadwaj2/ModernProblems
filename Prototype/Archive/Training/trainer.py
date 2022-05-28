@@ -1,5 +1,5 @@
 from unittest.util import _MAX_LENGTH
-from transformers import AutoTokenizer, AutoModelForTextGeneration, TrainingArguments, Trainer
+from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments, Trainer
 from datasets import load_dataset, load_metric
 import numpy as np
 
@@ -16,7 +16,7 @@ tokenized_datasets=dataset.map(tokenize_function, batched=True)
 small_train_dataset = tokenized_datasets["train"].shuffle(seed=42).select(range(1000))
 small_eval_dataset = tokenized_datasets["test"].shuffle(seed=42).select(range(1000))
 
-model = AutoModelForTextGeneration.from_pretrained('huggingtweets/nature')
+model = AutoModelForCausalLM.from_pretrained('huggingtweets/nature')
 
 model.config.pad_token_id = tokenizer.pad_token_id
 
