@@ -1,10 +1,11 @@
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer
+from unittest.util import _MAX_LENGTH
+from transformers import AutoTokenizer, AutoModelForTextGeneration, TrainingArguments, Trainer
 from datasets import load_dataset, load_metric
 import numpy as np
 
 dataset = load_dataset('scientific_papers', 'pubmed')
 
-tokenizer = AutoTokenizer.from_pretrained('huggingtweets/nature')
+tokenizer = AutoTokenizer.from_pretrained('gpt2')
 tokenizer.pad_token = tokenizer.eos_token
 
 def tokenize_function(examples):
@@ -15,7 +16,9 @@ tokenized_datasets=dataset.map(tokenize_function, batched=True)
 small_train_dataset = tokenized_datasets["train"].shuffle(seed=42).select(range(1000))
 small_eval_dataset = tokenized_datasets["test"].shuffle(seed=42).select(range(1000))
 
-model = AutoModelForSequenceClassification.from_pretrained('huggingtweets/nature')
+model = AutoModelForTextGeneration.from_pretrained('huggingtweets/nature')
+
+model.config.pad_token_id = tokenizer.pad_token_id
 
 training_args = TrainingArguments(output_dir='Training')
 
