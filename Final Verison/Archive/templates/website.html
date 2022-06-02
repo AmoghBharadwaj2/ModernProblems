@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}"> -->
+        <title>Modern Problems</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            body {
+              font: 20px Montserrat, sans-serif;
+              line-height: 1.8;
+              color: #0a0a0a;
+            }
+            img {
+              border: 1px solid #ddd;
+              border-radius: 4px;
+              padding: 5px;
+              width: 200px;
+              height: 300px;
+            }
+            textarea::placeholder {
+              color:#2f2f2f;
+            }
+            button {
+                color:#2f2f2f;
+            }
+            p {font-size: 30px;}
+            .margin {margin-bottom: 45px;}
+            .bg-1 { 
+              background-color: #1abc9c; /* Green */
+              color: #ffffff;
+            }
+            .bg-2 { 
+              background-color: #474e5d; /* Dark Blue */
+              color: #ffffff;
+            }
+            .bg-3 { 
+              background-color: #ffffff; /* White */
+              color: #555555;
+            }
+            .bg-4 { 
+              background-color: #2f2f2f; /* Black Gray */
+              color: #fff;
+            }
+            .container-fluid {
+              padding-top: 70px;
+              padding-bottom: 70px;
+            }
+            .navbar {
+              padding-top: 15px;
+              padding-bottom: 15px;
+              border: 0;
+              border-radius: 0;
+              margin-bottom: 0;
+              font-size: 12px;
+              letter-spacing: 5px;
+            }
+            .navbar-nav  li a:hover {
+              color: #1abc9c !important;
+            }
+            </style>
+    </head>
+    
+    <body>
+<!-- First Container -->
+<div class="container-fluid bg-1 text-center">
+    
+    <blockquote class="blockquote text-center">
+        <h1>Modern Problems In Science</h1>
+        <footer class="blockquote-footer"> <p class="bg-1">An entertaining web app for auto genertaing text</p> </footer>
+      </blockquote>
+  </div>
+        <div style="display:table;margin:0 auto;">
+          <img src="{{ url_for('static', filename='styles/1100px_giuseppe_molteni_confession_1838.jpeg') }}" class="img-fluid" style="width: 500px;" alt="Responsive image">
+          <img src="{{ url_for('static', filename='styles/E591A76DD88C1174B6B5C6E14C3DBAE85062D222_size79_w1000_h707.jpeg') }}" class="img-fluid" style="width: 300px;" alt="Responsive image">
+          <img src="{{ url_for('static', filename='styles/the-ancient-greek-philosopher-plato-his-life-and-works.jpeg') }}" class="img-fluid" style="width: 200px;" alt="Responsive image">
+        </div>
+          <form name="form", method="POST", style="text-align: center;">
+            <p class="bg-4">Question:</p>
+            <textarea rows="5" cols="30" name = "input" placeholder= "enter input in format {Question, Numbers}" required></textarea>
+            <br>
+            <button class="btn btn-success" value="Submit">Run</button>
+            <br>
+            <br>
+        </form>
+
+        <ul class="list-group">
+          <li class="list-group-item disabled">Output</li>
+          {% for single in output %}
+          <li class="list-group-item">{{ single }}</li>
+          {% endfor %}
+          
+        </ul>
+
+
+    </body>
+</html>
+
